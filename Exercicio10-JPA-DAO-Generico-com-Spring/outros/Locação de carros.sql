@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS locacao_veiculos.clients;
 DROP TABLE IF EXISTS locacao_veiculos.cars;
+DROP TABLE IF EXISTS locacao_veiculos.stores;
 
 CREATE TABLE locacao_veiculos.clients (
   id INT NOT NULL AUTO_INCREMENT,
@@ -22,6 +23,14 @@ CREATE TABLE locacao_veiculos.cars (
 ENGINE = INNODB
 CHARACTER SET utf8mb4;
 
+CREATE TABLE locacao_veiculos.stores (
+  id INT NOT NULL AUTO_INCREMENT,
+  address VARCHAR(127) NOT NULL,
+  PRIMARY KEY (id)
+)
+ENGINE = INNODB
+CHARACTER SET utf8mb4;
+
 INSERT INTO clients(NAME, CPF)
 VALUES('João Victor Simonassi', '14902272765');
 
@@ -36,6 +45,12 @@ VALUES ('LXR5540', 'Civic', 'Honda');
 
 INSERT INTO cars(identification, model, brand)
 VALUES ('LPT8827', 'Gol', 'VW');
+
+INSERT INTO stores(address)
+VALUES ('Passo da Pátria - 80, Niterói - RJ');
+
+INSERT INTO stores(address)
+VALUES ('Centro - 900, Itaboraí - RJ');
 
 select * from clients;
 select * from cars;
