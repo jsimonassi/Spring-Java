@@ -23,10 +23,13 @@ ENGINE = INNODB
 CHARACTER SET utf8mb4;
 
 INSERT INTO clients(NAME, CPF)
-VALUES('João Victor Simonassi', '14902272709');
+VALUES('João Victor Simonassi', '14902272765');
 
 INSERT INTO clients(NAME, CPF)
 VALUES('Fulano da Silva', '12345678911');
+
+INSERT INTO clients(NAME, CPF)
+VALUES('Pedro da Silva', '12345678911');
 
 INSERT INTO cars(identification, model, brand)
 VALUES ('LXR5540', 'Civic', 'Honda');
