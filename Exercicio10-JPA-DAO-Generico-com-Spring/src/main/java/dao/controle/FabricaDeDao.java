@@ -3,6 +3,7 @@ package dao.controle;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import dao.impl.CarDAOImpl;
 import dao.impl.ClientDAOImpl;
 import dao.impl.LanceDAOImpl;
 import dao.impl.ProdutoDAOImpl;
@@ -32,6 +33,11 @@ public class FabricaDeDao {
 	@Bean
 	public static ClientDAOImpl getClientDao() throws Exception {
 		return getDao(dao.impl.ClientDAOImpl.class);
+	}
+	
+	@Bean
+	public static CarDAOImpl getCarDao() throws Exception {
+		return getDao(dao.impl.CarDAOImpl.class);
 	}
 
 	@SuppressWarnings("unchecked")
