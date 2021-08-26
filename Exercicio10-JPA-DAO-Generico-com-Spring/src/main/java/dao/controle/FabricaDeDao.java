@@ -7,6 +7,7 @@ import dao.impl.CarDAOImpl;
 import dao.impl.ClientDAOImpl;
 import dao.impl.LanceDAOImpl;
 import dao.impl.ProdutoDAOImpl;
+import dao.impl.StoreDAOImpl;
 import net.sf.cglib.proxy.Enhancer;
 
 // A anotação @Configuration indica que esta classe possui um ou mais métodos anotados com @Bean.
@@ -38,6 +39,11 @@ public class FabricaDeDao {
 	@Bean
 	public static CarDAOImpl getCarDao() throws Exception {
 		return getDao(dao.impl.CarDAOImpl.class);
+	}
+	
+	@Bean
+	public static StoreDAOImpl getStoreDao() throws Exception {
+		return getDao(dao.impl.StoreDAOImpl.class);
 	}
 
 	@SuppressWarnings("unchecked")

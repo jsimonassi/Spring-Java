@@ -54,4 +54,5 @@ VALUES ('Centro - 900, Itaboraí - RJ');
 
 select * from clients;
 select * from cars;
+select * from stores;
 

@@ -13,10 +13,6 @@ import javax.persistence.Table;
 @NamedQueries({
 	@NamedQuery(name = "Car.getAllCars", query = "select c from Car c order by c.id") })
 
-//identification VARCHAR(127) NOT NULL,
-//model VARCHAR(127),
-//brand VARCHAR(127),
-
 @Entity
 @Table(name = "cars")
 public class Car {
