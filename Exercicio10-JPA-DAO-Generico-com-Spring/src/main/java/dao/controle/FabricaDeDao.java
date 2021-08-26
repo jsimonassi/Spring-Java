@@ -5,8 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import dao.impl.CarDAOImpl;
 import dao.impl.ClientDAOImpl;
-import dao.impl.LanceDAOImpl;
-import dao.impl.ProdutoDAOImpl;
+import dao.impl.RentDAOImpl;
 import dao.impl.StoreDAOImpl;
 import net.sf.cglib.proxy.Enhancer;
 
@@ -21,15 +20,6 @@ public class FabricaDeDao {
 	// @Autowired em ProdutoAppServiceImpl diz:
 	// Por favor, me retorne uma instância do tipo ProdutoDAO, isto é,  
 	// aquela que foi criada mais cedo com a anotação @Bean.
-	@Bean
-	public static ProdutoDAOImpl getProdutoDao() throws Exception {
-		return getDao(dao.impl.ProdutoDAOImpl.class);
-	}
-
-	@Bean
-	public static LanceDAOImpl getLanceDao() throws Exception {
-		return getDao(dao.impl.LanceDAOImpl.class);
-	}
 	
 	@Bean
 	public static ClientDAOImpl getClientDao() throws Exception {
@@ -44,6 +34,11 @@ public class FabricaDeDao {
 	@Bean
 	public static StoreDAOImpl getStoreDao() throws Exception {
 		return getDao(dao.impl.StoreDAOImpl.class);
+	}
+	
+	@Bean
+	public static RentDAOImpl getRentDao() throws Exception {
+		return getDao(dao.impl.RentDAOImpl.class);
 	}
 
 	@SuppressWarnings("unchecked")

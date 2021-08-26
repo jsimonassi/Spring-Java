@@ -9,7 +9,7 @@ public interface StoreAppService {
 	
 	long inclui(Store newStore);
 	
-	void altera(Store castorer) throws ObjetoNaoEncontradoException;
+	void altera(Store store) throws ObjetoNaoEncontradoException;
 	
 	void exclui(Store store) throws ObjetoNaoEncontradoException;
 	

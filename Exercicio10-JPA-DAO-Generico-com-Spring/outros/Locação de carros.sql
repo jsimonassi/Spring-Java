@@ -31,6 +31,24 @@ CREATE TABLE locacao_veiculos.stores (
 ENGINE = INNODB
 CHARACTER SET utf8mb4;
 
+CREATE TABLE locacao_veiculos.rents (
+  id INT NOT NULL AUTO_INCREMENT,
+  start_date datetime NOT NULL,
+  end_date datetime NOT NULL,
+  price double,
+  car_id int not null,
+  withdrawn_store_id int not null,
+  devolution_store_id int not null,
+  client_id int not null,
+  PRIMARY KEY (id),
+  FOREIGN KEY (car_id) REFERENCES Cars(id),
+  FOREIGN KEY (withdrawn_store_id) REFERENCES Stores(id),
+  FOREIGN KEY (devolution_store_id) REFERENCES Stores(id),
+  FOREIGN KEY (client_id) REFERENCES Clients(id)
+)
+ENGINE = INNODB
+CHARACTER SET utf8mb4;
+
 INSERT INTO clients(NAME, CPF)
 VALUES('João Victor Simonassi', '14902272765');
 
