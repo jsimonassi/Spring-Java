@@ -21,12 +21,11 @@ public class PrincipalRent {
 		while (continua) {
 			System.out.println('\n' + "O que você deseja fazer?");
 			System.out.println('\n' + "1. Cadastrar uma nova locação");
-			System.out.println("2. Alterar uma locação");
-			System.out.println("3. Remover uma locação");
-			System.out.println("4. Listar todas as locações");
-			System.out.println("5. Sair");
+			System.out.println("2. Remover uma locação");
+			System.out.println("3. Listar todas as locações");
+			System.out.println("4. Sair");
 
-			int opcao = Console.readInt('\n' + "Digite um número entre 1 e 5:");
+			int opcao = Console.readInt('\n' + "Digite um número entre 1 e 4:");
 
 			switch (opcao) {
 			case 1: {
@@ -39,9 +38,9 @@ public class PrincipalRent {
 				Long clientId = (long) Console.readInt('\n' + "Informe o número do cliente: ");
 				
 				Rent newRent = new Rent(Util.strToCalendar(startDate), Util.strToCalendar(endDate),
-						price, carId, withdrawnStoreId, devolutionStoreId);
+						price, carId, clientId, withdrawnStoreId, devolutionStoreId);
 				
-				long id = rentAppService.inclui(newRent);
+				rentAppService.inclui(newRent);
 
 				System.out.println('\n' + "Locação incluída com sucesso!");
 
@@ -49,34 +48,6 @@ public class PrincipalRent {
 			}
 
 			case 2: {
-				//TODO
-//				int id = Console.readInt('\n' + "Digite o número da loja que você deseja alterar: ");
-//				Store store;
-//				try {
-//					store = storeAppService.recuperaUmaLoja(id);
-//
-//				} catch (ObjetoNaoEncontradoException e) {
-//					System.out.println('\n' + e.getMessage());
-//					break;
-//				}
-//
-//				System.out.println('\n' + store.toString());
-//
-//	
-//					String newAddress = Console.readLine("Digite o novo endereço: ");
-//					store.setAddress(newAddress);
-//
-//					try {
-//						storeAppService.altera(store);
-//
-//						System.out.println('\n' + "Alteração de endereço efetuada com sucesso!");
-//					} catch (ObjetoNaoEncontradoException e) {
-//						System.out.println('\n' + e.getMessage());
-//					}
-				break;
-			}
-
-			case 3: {
 				int id = Console.readInt('\n' + "Digite o número da locação que você deseja remover: ");
 				Rent rent;
 
@@ -105,7 +76,7 @@ public class PrincipalRent {
 				break;
 			}
 
-			case 4: {
+			case 3: {
 			
 				List<Rent> rents = rentAppService.getAllRents();
 
@@ -122,7 +93,7 @@ public class PrincipalRent {
 				break;
 			}
 
-			case 5: {
+			case 4: {
 				continua = false;
 				break;
 			}

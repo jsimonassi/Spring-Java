@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import util.Util;
+
 @NamedQueries({
 	@NamedQuery(name = "Rent.getAllRents", query = "select r from Rent r order by r.id") })
 
@@ -23,20 +25,22 @@ public class Rent {
 	private Calendar endDate;
 	private double price;
 	private Long carId;
+	private Long clientId;
 	private Long withdrawnStoreId;
 	private Long devolutionStoreId;
-
+	//TODO: Add clientId
 
 	// ********* Construtores *********
 
 	public Rent() {
 	}
 
-	public Rent(Calendar startDate, Calendar endDate, double price, Long carId, Long withdrawnStoreId, Long devolutionStoreId) {
+	public Rent(Calendar startDate, Calendar endDate, double price, Long carId, Long clientId, Long withdrawnStoreId, Long devolutionStoreId) {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.price = price;
 		this.carId = carId;
+		this.clientId = clientId;
 		this.withdrawnStoreId = withdrawnStoreId;
 		this.devolutionStoreId = devolutionStoreId;
 	}
@@ -67,19 +71,22 @@ public class Rent {
 	}
 
 	@Column(name = "car_id")
-	public double getCarId() {
+	public Long getCarId() {
 		return carId;
+	}
+	
+	@Column(name = "client_id")
+	public Long getClientId() {
+		return clientId;
 	}
 
 	@Column(name = "withdrawn_store_id")
-	@Temporal(TemporalType.DATE)
-	public double getWithdrawnStoreId() {
+	public Long getWithdrawnStoreId() {
 		return withdrawnStoreId;
 	}
 	
 	@Column(name = "devolution_store_id")
-	@Temporal(TemporalType.DATE)
-	public double getDevolutionStoreId() {
+	public Long getDevolutionStoreId() {
 		return devolutionStoreId;
 	}
 	
@@ -105,6 +112,10 @@ public class Rent {
 	public void setCarId(Long carId) {
 		this.carId = carId;
 	}
+	
+	public void setClientId(Long clientId) {
+		this.clientId = clientId;
+	}
 
 	public void setWithdrawnStoreId(Long withdrawnStoreId) {
 		this.withdrawnStoreId = withdrawnStoreId;
@@ -112,5 +123,12 @@ public class Rent {
 
 	public void setDevolutionStoreId(Long devolutionStoreId) {
 		this.devolutionStoreId = devolutionStoreId;
+	}
+	
+	@Override
+	public String toString() {
+		return "Número: " + this.id + " | data de início: " +Util.calendarToStr(this.startDate) + " | data do término: " 
+				+ Util.calendarToStr(endDate) + " | Preço: " + this.price + " | Id do carro: " + this.carId + " | ID do cliente: "
+				+ this.clientId + " | ID Loja Retirada: " + this.withdrawnStoreId + " | ID Loja Devolução: " + this.devolutionStoreId;
 	}
 }

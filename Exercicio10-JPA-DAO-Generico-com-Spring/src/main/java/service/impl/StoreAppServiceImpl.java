@@ -44,6 +44,4 @@ public class StoreAppServiceImpl implements StoreAppService{
 	public List<Store> getAllStores() {
 		return storeDao.getAllStores();
 	}
-
-
 }
