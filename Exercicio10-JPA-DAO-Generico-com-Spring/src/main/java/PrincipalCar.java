@@ -6,6 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import corejava.Console;
 import excecao.ObjetoNaoEncontradoException;
 import modelo.Car;
+import modelo.Client;
+import modelo.Rent;
 import service.CarAppService;
 
 public class PrincipalCar {
@@ -23,7 +25,8 @@ public class PrincipalCar {
 			System.out.println("2. Alterar um carro");
 			System.out.println("3. Remover um carro");
 			System.out.println("4. Listar todos os carros");
-			System.out.println("5. Sair");
+			System.out.println("5. Listar todos as locações de um carro");
+			System.out.println("6. Sair");
 
 			int opcao = Console.readInt('\n' + "Digite um número entre 1 e 5:");
 
@@ -158,8 +161,27 @@ public class PrincipalCar {
 
 				break;
 			}
-
+			
 			case 5: {
+				int id = Console.readInt('\n' + "Digite o número do carro que você deseja listar as locações: ");
+				Car car;
+
+				try {
+					car = carAppService.getCarWithAllRents(id);
+					System.out.println('\n' + car.toString());
+					for(Rent rent : car.getRents()) {
+						System.out.println('\n' + rent.toString());
+					}
+					
+				} catch (ObjetoNaoEncontradoException e) {
+					System.out.println('\n' + e.getMessage());
+					break;
+				}
+				
+				break;
+			}
+
+			case 6: {
 				continua = false;
 				break;
 			}

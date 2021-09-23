@@ -32,7 +32,8 @@ public class Rent {
 	private Long withdrawnStoreId;
 	private Long devolutionStoreId;
 	
-	public Client client;
+	private Client client;
+	private Car car;
 	
 	// ********* Construtores *********
 
@@ -144,5 +145,15 @@ public class Rent {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "car_id", insertable=false, updatable=false)
+	public Car getCar() {
+		return this.car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
 	}
 }

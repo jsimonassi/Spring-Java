@@ -17,4 +17,7 @@ public interface CarAppService {
 	
 	List<Car> getAllCars();
 
+	Car getCarWithAllRents(long id) throws ObjetoNaoEncontradoException;
+	
+
 }

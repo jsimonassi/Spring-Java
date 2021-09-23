@@ -1,10 +1,8 @@
 package service.impl;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-
 import dao.CarDAO;
 import excecao.ObjetoNaoEncontradoException;
 import modelo.Car;
@@ -45,6 +43,16 @@ public class CarAppServiceImpl implements CarAppService{
 	public List<Car> getAllCars() {
 		return carDao.getAllCars();
 	}
+	
+	
+	public Car getCarWithAllRents(long id) throws ObjetoNaoEncontradoException {
+        try {
+            return carDao.getCarWithAllRents(id);
+            
+        } catch (ObjetoNaoEncontradoException e) {
+            throw new ObjetoNaoEncontradoException();
+        }
+    }
 
 
 }

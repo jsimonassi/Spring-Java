@@ -5,10 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import dao.ClientDAO;
-import excecao.ClientNotFoundException;
 import excecao.ObjetoNaoEncontradoException;
 import modelo.Client;
-import modelo.Rent;
 import service.ClientAppService;
 
 public class ClientAppServiceImpl implements ClientAppService{

@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 @NamedQueries({
 	@NamedQuery(name = "Client.getAllClients", query = "select c from Client c order by c.id"),
-	@NamedQuery(name = "Client.getClientWithAllRents", query = "select j from Client j left outer join j.rents where j.id = ?1")})
+	@NamedQuery(name = "Client.getClientWithAllRents", query = "select j from Client j left outer join fetch j.rents where j.id = ?1")})
 	
 
 
@@ -83,8 +83,6 @@ public class Client {
 	}
 
 	public void setRents(List<Rent> rents) {
-		//TODO: Validar este fluxo com o professor! rents não deveria mais ser um proxy.
-		int aux = rents.size();	//Apenas para forçar a nova consulta
 		this.rents = rents;
 	}
 }
