@@ -3,9 +3,12 @@ package modelo;
 import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -28,8 +31,9 @@ public class Rent {
 	private Long clientId;
 	private Long withdrawnStoreId;
 	private Long devolutionStoreId;
-	//TODO: Add clientId
-
+	
+	public Client client;
+	
 	// ********* Construtores *********
 
 	public Rent() {
@@ -130,5 +134,15 @@ public class Rent {
 		return "Número: " + this.id + " | data de início: " +Util.calendarToStr(this.startDate) + " | data do término: " 
 				+ Util.calendarToStr(endDate) + " | Preço: " + this.price + " | Id do carro: " + this.carId + " | ID do cliente: "
 				+ this.clientId + " | ID Loja Retirada: " + this.withdrawnStoreId + " | ID Loja Devolução: " + this.devolutionStoreId;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "client_id", insertable=false, updatable=false)
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 }

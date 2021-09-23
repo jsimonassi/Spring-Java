@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import dao.ClientDAO;
+import excecao.ClientNotFoundException;
 import excecao.ObjetoNaoEncontradoException;
 import modelo.Client;
+import modelo.Rent;
 import service.ClientAppService;
 
 public class ClientAppServiceImpl implements ClientAppService{
@@ -43,5 +45,15 @@ public class ClientAppServiceImpl implements ClientAppService{
 	public List<Client> getAllClients() {
 		return clientDao.getAllClients();
 	}
+
+
+	public Client getClientWithAllRents(long id) throws ObjetoNaoEncontradoException {
+        try {
+            return clientDao.getClientWithAllRents(id);
+            
+        } catch (ObjetoNaoEncontradoException e) {
+            throw new ObjetoNaoEncontradoException();
+        }
+    }
 
 }

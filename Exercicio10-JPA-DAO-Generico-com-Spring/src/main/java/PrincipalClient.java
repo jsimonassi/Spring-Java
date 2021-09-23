@@ -1,12 +1,12 @@
 import java.util.List;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import corejava.Console;
 import excecao.ObjetoNaoEncontradoException;
 import modelo.Client;
+import modelo.Rent;
 import service.ClientAppService;
+
 
 public class PrincipalClient {
 	public static void main(String[] args) {
@@ -23,7 +23,8 @@ public class PrincipalClient {
 			System.out.println("2. Alterar um cliente");
 			System.out.println("3. Remover um cliente");
 			System.out.println("4. Listar todos os clientes");
-			System.out.println("5. Sair");
+			System.out.println("5. Listar todos as locações de um cliente");
+			System.out.println("6. Sair");
 
 			int opcao = Console.readInt('\n' + "Digite um número entre 1 e 5:");
 
@@ -141,8 +142,27 @@ public class PrincipalClient {
 
 				break;
 			}
-
+			
 			case 5: {
+				int id = Console.readInt('\n' + "Digite o número do cliente que você deseja listar as locações: ");
+				Client client;
+
+				try {
+					client = clientAppService.getClientWithAllRents(id);
+					System.out.println('\n' + client.toString());
+					for(Rent rent : client.getRents()) {
+						System.out.println('\n' + rent.toString());
+					}
+					
+				} catch (ObjetoNaoEncontradoException e) {
+					System.out.println('\n' + e.getMessage());
+					break;
+				}
+				
+				break;
+			}
+
+			case 6: {
 				continua = false;
 				break;
 			}
